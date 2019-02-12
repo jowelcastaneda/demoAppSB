@@ -1,4 +1,5 @@
-package io.agileintelligence.projectboard.domain;
+package io.agileintelligence.projectboard.domain.model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,24 +8,29 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class ProjectTask {
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "This cannot be blank")
     private String title;
-    private String concept;
+    private String content;
 
-    public ProjectTask() {
+    public Task() {
     }
 
-    public Long getId() {
+    public Task(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public  void  setId(long id){
         this.id = id;
     }
 
@@ -36,11 +42,12 @@ public class ProjectTask {
         this.title = title;
     }
 
-    public String getConcept() {
-        return concept;
+    public String getContent() {
+        return content;
     }
 
-    public void setConcept(String concept) {
-        this.concept = concept;
+    public void  setContent(String content) {
+        this.content = content;
     }
+
 }

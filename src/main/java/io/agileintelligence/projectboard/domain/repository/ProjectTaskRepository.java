@@ -1,11 +1,21 @@
 package io.agileintelligence.projectboard.domain.repository;
 
-import io.agileintelligence.projectboard.domain.ProjectTask;
-import org.springframework.data.repository.CrudRepository;
+import io.agileintelligence.projectboard.domain.model.Task;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ProjectTaskRepository extends CrudRepository<ProjectTask, Long> {
+import java.util.List;
 
-    ProjectTask getById(Long id);
+@Repository
+public interface ProjectTaskRepository {
+
+    Task getById(Long id);
+    List<Task> findAll();
+    Task findById(long id);
+    Task findByIdEdit(long id);
+    Task save(Task project);
+    Task remove(long id);
+    Task update(long id, Task task);
+    Task execute(String url, HttpMethod method, HttpEntity<Task> entity);
 }
